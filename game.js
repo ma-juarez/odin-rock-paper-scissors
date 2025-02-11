@@ -23,64 +23,66 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice){
     if (humanChoice == computerChoice) {
-        console.log("A tie! No one wins");
+        result.textContent = "It's a tie!";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: black;"
     } else if (humanChoice == 0 && computerChoice == 1) {
-        console.log("You lose! Paper beats rock");
+        result.textContent = "You lose! Paper beats rock";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;"
         computerScore += 1;
+        compScore.textContent = `Computer Score: ${computerScore}`
     } else if (humanChoice == 1 && computerChoice == 2) {
-        console.log("You lose! Scissors beat paper");
+        result.textContent = "You lose! Scissor beats paper";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;"
         computerScore += 1;
+        compScore.textContent = `Computer Score: ${computerScore}`
     } else if (humanChoice == 2 && computerChoice == 0) {
-        console.log("You lose! Rock beats scissors");
+        result.textContent = "You lose! Rock beats scissor";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;"
         computerScore += 1;
+        compScore.textContent = `Computer Score: ${computerScore}`
     } else if (humanChoice == 1 && computerChoice == 0) {
-        console.log("You win! Paper beats rock");
+        result.textContent = "You win! Paper beats rock";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;"
         humanScore += 1;
+        humScore.textContent = `Computer Score: ${humanScore}`
     } else if (humanChoice == 2 && computerChoice == 1) {
-        console.log("You win! Scissors beat paper");
+        result.textContent = "You win! Scissor beats paper";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;"
         humanScore += 1;
+        humScore.textContent = `Computer Score: ${humanScore}`
     } else if (humanChoice == 0 && computerChoice == 2) {
-        console.log("You win! Rock beats scissors");
-        humanScore += 1;   
+        result.textContent = "You win! Rock beats scissor";
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;"
+        humanScore += 1;
+        humScore.textContent = `Computer Score: ${humanScore}`   
     }
 
 }
 
-function playGame(){
-   
-    let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-
-    console.log(`Human Score: ${humanScore}`);
-    console.log(`Computer Score: ${computerScore}`);
-    if (humanScore > computerScore){
-        console.log("Human Wins - You are the best");
-    } else if (humanScore < computerScore) {
-        console.log("Computer Wins - You suck");
-    } else {
-        console.log("It's a Tie!!")
-    }
-}
 
 let humanScore = 0;
 let computerScore = 0;
 
-playGame()
+// DOM Elements Query
+const result = document.querySelector(".result")
+const compScore = document.querySelector(".computer")
+const humScore = document.querySelector(".human")
+
+// Event listing for button click
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    if (button.className == "rock") {
+        playRound(0, getComputerChoice())
+    } else if (button.className == "paper") {
+        playRound(1, getComputerChoice())
+    } else if (button.className == "scissor") {
+        playRound(2, getComputerChoice())
+    }
+  });
+});
 

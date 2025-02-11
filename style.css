@@ -1,0 +1,37 @@
+body {
+    background-color: darkslategrey;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    padding-top: 12em;
+    padding-bottom: 2em;
+    gap: 1em;
+}
+
+button {
+    background-color: darkkhaki;
+    width: 150px;
+    height: 100px;
+    border-radius: 0.5em;
+    font-size: 15px;
+    font-weight: bold;
+    border-style: solid;
+    border-color: darkkhaki;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scores {
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+}
