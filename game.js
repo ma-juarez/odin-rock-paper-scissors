@@ -24,37 +24,37 @@ function getHumanChoice() {
 function playRound(humanChoice, computerChoice){
     if (humanChoice == computerChoice) {
         result.textContent = "It's a tie!";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: black;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: black;";
     } else if (humanChoice == 0 && computerChoice == 1) {
         result.textContent = "You lose! Paper beats rock";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;";
         computerScore += 1;
-        compScore.textContent = `Computer Score: ${computerScore}`
+        compScore.textContent = `Computer Score: ${computerScore}`;
     } else if (humanChoice == 1 && computerChoice == 2) {
         result.textContent = "You lose! Scissor beats paper";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;";
         computerScore += 1;
-        compScore.textContent = `Computer Score: ${computerScore}`
+        compScore.textContent = `Computer Score: ${computerScore}`;
     } else if (humanChoice == 2 && computerChoice == 0) {
         result.textContent = "You lose! Rock beats scissor";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: red;";
         computerScore += 1;
-        compScore.textContent = `Computer Score: ${computerScore}`
+        compScore.textContent = `Computer Score: ${computerScore}`;
     } else if (humanChoice == 1 && computerChoice == 0) {
         result.textContent = "You win! Paper beats rock";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;";
         humanScore += 1;
-        humScore.textContent = `Computer Score: ${humanScore}`
+        humScore.textContent = `Computer Score: ${humanScore}`;
     } else if (humanChoice == 2 && computerChoice == 1) {
         result.textContent = "You win! Scissor beats paper";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;";
         humanScore += 1;
-        humScore.textContent = `Computer Score: ${humanScore}`
+        humScore.textContent = `Computer Score: ${humanScore}`;
     } else if (humanChoice == 0 && computerChoice == 2) {
         result.textContent = "You win! Rock beats scissor";
-        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;"
+        result.style.cssText = "font-size: 35px; font-weight: bold; color: green;";
         humanScore += 1;
-        humScore.textContent = `Computer Score: ${humanScore}`   
+        humScore.textContent = `Computer Score: ${humanScore}`;   
     }
 
 }
@@ -77,11 +77,25 @@ buttons.forEach((button) => {
   // and for each one we add a 'click' listener
   button.addEventListener("click", () => {
     if (button.className == "rock") {
-        playRound(0, getComputerChoice())
+        playRound(0, getComputerChoice());
     } else if (button.className == "paper") {
-        playRound(1, getComputerChoice())
+        playRound(1, getComputerChoice());
     } else if (button.className == "scissor") {
-        playRound(2, getComputerChoice())
+        playRound(2, getComputerChoice());
+    }
+
+    if (humanScore == 5) {
+        result.textContent = "You are the champion!!";
+        result.style.cssText = "font-size: 45px; font-weight: bold; color: gold;";
+
+        humanScore = 0
+        computerScore = 0
+    } else if (computerScore == 5) {
+        result.textContent = "Computer Wins!!";
+        result.style.cssText = "font-size: 45px; font-weight: bold; color: red;";
+
+        humanScore = 0
+        computerScore = 0
     }
   });
 });
